@@ -1,0 +1,941 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Kaelan Patterson | Engineering Portfolio</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta
+    name="description"
+    content="Portfolio of Kaelan Patterson, Mechatronics Engineering student at the University of Guelph."
+  />
+  <style>
+    :root {
+      --bg: #050816;
+      --bg-alt: #0b1020;
+      --card: #111827;
+      --accent: #38bdf8;
+      --accent-soft: rgba(56, 189, 248, 0.12);
+      --text: #e5e7eb;
+      --muted: #9ca3af;
+      --border: #1f2937;
+      --radius-lg: 18px;
+      --radius-md: 12px;
+      --shadow-soft: 0 18px 40px rgba(0, 0, 0, 0.45);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+        sans-serif;
+      background: radial-gradient(circle at top, #1f2937 0, #020617 52%);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    .page {
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 20px 16px 64px;
+    }
+
+    /* NAVBAR */
+
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 8px 0 12px;
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      backdrop-filter: blur(16px);
+      background: linear-gradient(
+        to bottom,
+        rgba(15, 23, 42, 0.95),
+        rgba(15, 23, 42, 0.4),
+        transparent
+      );
+    }
+
+    .nav-left {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .logo-badge {
+      width: 36px;
+      height: 36px;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.35);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: radial-gradient(circle at 30% 0, #38bdf8, #0f172a 55%);
+      box-shadow: 0 12px 25px rgba(0, 0, 0, 0.4);
+      font-weight: 700;
+      font-size: 18px;
+      color: #e5e7eb;
+    }
+
+    .nav-title {
+      font-size: 17px;
+      font-weight: 600;
+    }
+
+    .nav-sub {
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 16px;
+      font-size: 14px;
+    }
+
+    .nav-links a {
+      padding: 4px 10px;
+      border-radius: 999px;
+      color: var(--muted);
+      transition: all 0.16s ease-out;
+    }
+
+    .nav-links a:hover {
+      color: var(--text);
+      background: rgba(15, 23, 42, 0.85);
+    }
+
+    /* HERO */
+
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 2.1fr) minmax(0, 1.5fr);
+      gap: 32px;
+      align-items: center;
+      margin-top: 26px;
+      margin-bottom: 48px;
+    }
+
+    .hero-badge-row {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+      margin-bottom: 14px;
+    }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 3px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.6);
+      background: rgba(15, 23, 42, 0.8);
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    .pill-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 999px;
+      background: #22c55e;
+      box-shadow: 0 0 0 4px rgba(34, 197, 94, 0.2);
+    }
+
+    .hero h1 {
+      font-size: clamp(32px, 4vw, 40px);
+      line-height: 1.15;
+      margin-bottom: 8px;
+    }
+
+    .hero h1 span {
+      background: linear-gradient(to right, #38bdf8, #a855f7, #f97316);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .hero-subtitle {
+      font-size: 15px;
+      color: var(--muted);
+      margin-bottom: 18px;
+      max-width: 34rem;
+    }
+
+    .hero-meta {
+      font-size: 13px;
+      color: var(--muted);
+      margin-bottom: 20px;
+    }
+
+    .hero-meta strong {
+      color: var(--text);
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: 14px;
+    }
+
+    .btn-primary {
+      padding: 8px 18px;
+      border-radius: 999px;
+      background: linear-gradient(to right, #38bdf8, #0ea5e9);
+      color: #0b1220;
+      border: none;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      box-shadow: 0 16px 30px rgba(8, 47, 73, 0.65);
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      text-decoration: none;
+    }
+
+    .btn-ghost {
+      padding: 8px 18px;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.6);
+      font-size: 14px;
+      color: var(--muted);
+      background: transparent;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      text-decoration: none;
+    }
+
+    .hero-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 8px;
+      font-size: 11px;
+    }
+
+    .hero-tags span {
+      padding: 3px 8px;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.9);
+      border: 1px solid rgba(148, 163, 184, 0.4);
+      color: var(--muted);
+    }
+
+    /* HERO RIGHT CARD */
+
+    .hero-photo-card {
+      background: radial-gradient(circle at 0 0, #22d3ee33, transparent 55%),
+        radial-gradient(circle at 100% 0, #a855f733, transparent 55%),
+        #020617;
+      border-radius: 28px;
+      padding: 18px;
+      border: 1px solid rgba(148, 163, 184, 0.4);
+      box-shadow: var(--shadow-soft);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .photo-note {
+      margin-top: 12px;
+      font-size: 11px;
+      color: var(--muted);
+      text-align: center;
+    }
+
+    .stat-strip {
+      position: absolute;
+      inset-inline: 18px;
+      bottom: 18px;
+      padding: 8px 10px;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.92);
+      border: 1px solid rgba(148, 163, 184, 0.5);
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+      font-size: 11px;
+      color: var(--muted);
+    }
+
+    .stat-strip strong {
+      display: block;
+      font-size: 12px;
+      color: var(--text);
+    }
+
+    /* SECTIONS */
+
+    section {
+      margin-bottom: 40px;
+    }
+
+    .section-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 14px;
+      gap: 10px;
+    }
+
+    .section-title {
+      font-size: 18px;
+      font-weight: 600;
+    }
+
+    .section-kicker {
+      font-size: 11px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .section-sub {
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    /* ABOUT */
+
+    .about-card {
+      background: rgba(15, 23, 42, 0.9);
+      border-radius: var(--radius-lg);
+      padding: 16px 18px;
+      border: 1px solid var(--border);
+      box-shadow: 0 14px 30px rgba(0, 0, 0, 0.35);
+      font-size: 14px;
+      color: var(--muted);
+    }
+
+    .about-card p + p {
+      margin-top: 10px;
+    }
+
+    /* SKILLS */
+
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+      gap: 14px;
+      font-size: 13px;
+    }
+
+    .skill-card {
+      background: rgba(15, 23, 42, 0.9);
+      border-radius: var(--radius-md);
+      padding: 12px 13px;
+      border: 1px solid var(--border);
+    }
+
+    .skill-card h3 {
+      font-size: 13px;
+      margin-bottom: 6px;
+    }
+
+    .skill-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 4px;
+    }
+
+    .skill-tags span {
+      padding: 3px 7px;
+      border-radius: 999px;
+      font-size: 11px;
+      background: rgba(15, 23, 42, 0.9);
+      border: 1px solid rgba(148, 163, 184, 0.45);
+      color: var(--muted);
+    }
+
+    /* PROJECTS */
+
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 16px;
+    }
+
+    .card {
+      background: radial-gradient(circle at 0 0, #1e293b, #020617);
+      border-radius: var(--radius-lg);
+      border: 1px solid rgba(148, 163, 184, 0.5);
+      padding: 14px;
+      box-shadow: var(--shadow-soft);
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      font-size: 13px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .card-tag {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--muted);
+    }
+
+    .card-title {
+      font-size: 15px;
+      font-weight: 600;
+    }
+
+    .card-body {
+      color: var(--muted);
+    }
+
+    .card-meta {
+      display: flex;
+      justify-content: flex-end;
+      align-items: flex-start;
+      margin-top: 8px;
+      font-size: 11px;
+      color: var(--muted);
+      gap: 10px;
+    }
+
+    .card-link {
+      font-size: 11px;
+      text-decoration: underline;
+      text-decoration-style: dotted;
+      cursor: pointer;
+    }
+
+    /* EXPERIENCE / EDUCATION */
+
+    .timeline {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 16px;
+      font-size: 13px;
+    }
+
+    .timeline-item {
+      background: rgba(15, 23, 42, 0.95);
+      border-radius: var(--radius-md);
+      padding: 12px 13px;
+      border: 1px solid var(--border);
+    }
+
+    .timeline-header {
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+      align-items: baseline;
+      margin-bottom: 4px;
+    }
+
+    .timeline-role {
+      font-weight: 600;
+      font-size: 13px;
+    }
+
+    .timeline-org {
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    .timeline-date {
+      font-size: 11px;
+      color: var(--muted);
+    }
+
+    .timeline-list {
+      margin-top: 6px;
+      padding-left: 16px;
+      color: var(--muted);
+    }
+
+    .timeline-list li + li {
+      margin-top: 4px;
+    }
+
+    /* FOOTER */
+
+    footer {
+      margin-top: 26px;
+      font-size: 12px;
+      color: var(--muted);
+      border-top: 1px solid rgba(31, 41, 55, 0.9);
+      padding-top: 14px;
+    }
+
+    .footer-grid {
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .contact-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      font-size: 12px;
+    }
+
+    .contact-links a {
+      text-decoration: underline;
+      text-decoration-style: dotted;
+    }
+
+    /* RESPONSIVE */
+
+    @media (max-width: 800px) {
+      .hero {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .hero-photo-card {
+        order: -1;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .nav-links {
+        display: none;
+      }
+
+      .page {
+        padding-inline: 14px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="page">
+    <!-- NAVBAR -->
+    <header class="nav">
+      <div class="nav-left">
+        <div class="logo-badge">K</div>
+        <div>
+          <div class="nav-title">Kaelan Patterson</div>
+          <div class="nav-sub">Mechatronics Engineering • U of Guelph</div>
+        </div>
+      </div>
+      <nav class="nav-links">
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#projects">Projects</a>
+        <a href="#experience">Experience</a>
+        <a href="#education">Education</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </header>
+
+    <main>
+      <!-- HERO -->
+      <section class="hero">
+        <div>
+          <div class="hero-badge-row">
+            <div class="pill">
+              <span class="pill-dot"></span>
+              Open to 2026 Engineering Internships
+            </div>
+            <div class="pill">First-Year • Mechatronics (Co-op)</div>
+          </div>
+
+          <h1>
+            Hi, I’m <span>Kaelan Patterson</span><br />
+            an aspiring Mechatronics Engineer.
+          </h1>
+
+          <p class="hero-subtitle">
+            I’m a Mechatronics Engineering student at the University of Guelph with hands-on experience
+            building Arduino-based robots and software — from a teddy bear wheelchair robot to a
+            C-based AI tic-tac-toe game.
+          </p>
+
+          <p class="hero-meta">
+            Based in <strong>Mississauga / Guelph, Ontario</strong> • Interested in: robotics,
+            artificial intelligence, mechanical systems, and embedded technologies for real-world hardware.
+          </p>
+
+          <div class="hero-actions">
+            <a href="#projects" class="btn-primary">
+              View Projects <span>↘</span>
+            </a>
+
+            <a
+              href="Kaelan Patterson - Resume December 2025.pdf"
+              download
+              target="_blank"
+              rel="noopener noreferrer"
+              class="btn-ghost"
+            >
+              Download Resume (PDF) <span>⬇</span>
+            </a>
+          </div>
+
+          <div class="hero-tags">
+            <span>C Programming</span>
+            <span>Robotics Leadership</span>
+            <span>Mechanical Design</span>
+            <span>Problem Solving</span>
+            <span>Teamwork</span>
+          </div>
+        </div>
+
+        <!-- RIGHT HERO CARD WITH HEADSHOT -->
+        <aside class="hero-photo-card">
+          <div style="
+            width: 190px;
+            height: 190px;
+            border-radius: 999px;
+            overflow: hidden;
+            margin: 0 auto;
+            border: 2px solid rgba(148,163,184,0.45);
+            box-shadow: 0 12px 28px rgba(0,0,0,0.45);
+          ">
+            <img
+              src="headshot.jpg"
+              alt="Kaelan Patterson headshot"
+              style="width:100%; height:100%; object-fit:cover; object-position:50% 25%;"
+            >
+          </div>
+
+          <p class="photo-note">Mechatronics Engineering Student</p>
+
+          <div class="stat-strip">
+            <div><strong>2+</strong> Years robotics leadership</div>
+            <div><strong>5+</strong> robots &amp; devices built</div>
+            <div><strong>Multiple</strong> refereeing &amp; work roles</div>
+          </div>
+        </aside>
+      </section>
+
+      <!-- ABOUT -->
+      <section id="about">
+        <div class="section-header">
+          <div>
+            <div class="section-kicker">About</div>
+            <h2 class="section-title">Who I am</h2>
+          </div>
+        </div>
+        <div class="about-card">
+          <p>
+            I’m currently in my first year of the Bachelor of Engineering in Mechatronics (Co-op) at the University of
+            Guelph. My coursework spans chemistry, physics, introductory programming, engineering design, and calculus,
+            giving me a strong foundation in the fundamentals of engineering.
+          </p>
+          <p>
+            Outside the classroom, I’ve been Vice President of my high school robotics team, where I helped design,
+            build, and program multiple competitive robots. I also work as a hockey referee and timekeeper, roles that
+            strengthened my decision-making, communication, and composure under pressure.
+          </p>
+          <p>
+            I’m now looking for engineering internships where I can contribute to real projects, learn from experienced
+            engineers, and keep building things that solve real problems.
+          </p>
+        </div>
+      </section>
+
+      <!-- SKILLS -->
+      <section id="skills">
+        <div class="section-header">
+          <div>
+            <div class="section-kicker">Skills</div>
+            <h2 class="section-title">Technical & Soft Skills</h2>
+          </div>
+          <div class="section-sub">
+            A mix of programming, mechanical, and people skills developed through robotics, work, and engineering
+            coursework.
+          </div>
+        </div>
+
+        <div class="skills-grid">
+          <div class="skill-card">
+            <h3>Technical</h3>
+            <div class="skill-tags">
+              <span>C Programming</span>
+              <span>Basic Electronics</span>
+              <span>Mechanical Design Concepts</span>
+              <span>Problem Decomposition</span>
+            </div>
+          </div>
+
+          <div class="skill-card">
+            <h3>Robotics & Engineering</h3>
+            <div class="skill-tags">
+              <span>Robotics Team Leadership</span>
+              <span>Prototyping</span>
+              <span>Testing & Iteration</span>
+              <span>System Thinking</span>
+              <span>Gameplay Strategy</span>
+            </div>
+          </div>
+
+          <div class="skill-card">
+            <h3>Professional</h3>
+            <div class="skill-tags">
+              <span>Leadership</span>
+              <span>Critical Thinking</span>
+              <span>Collaboration</span>
+              <span>Reliability</span>
+              <span>Accountability</span>
+              <span>Proactive Attitude</span>
+            </div>
+          </div>
+
+          <div class="skill-card">
+            <h3>Work Habits</h3>
+            <div class="skill-tags">
+              <span>Handling Pressure</span>
+              <span>Conflict Resolution</span>
+              <span>Customer/Player Interaction</span>
+              <span>Time Management</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- PROJECTS -->
+      <section id="projects">
+        <div class="section-header">
+          <div>
+            <div class="section-kicker">Projects</div>
+            <h2 class="section-title">Engineering & Coding Work</h2>
+          </div>
+        </div>
+
+        <div class="cards-grid">
+          <!-- Teddy Bear Project -->
+          <article class="card">
+            <div class="card-tag">Assistive Device • Mechanical</div>
+            <h3 class="card-title">Teddy Bear Wheelchair Robot</h3>
+
+            <p class="card-body">
+              Designed and built a miniature wheelchair robot as a playful assistive device, focused on stability,
+              maneuverability, and mechanical design principles at a small scale.
+            </p>
+
+            <div class="card-meta">
+              <details>
+                <summary class="card-link">View build photos ▾</summary>
+
+                <div style="margin-top:15px; display:flex; flex-direction:column; gap:16px;">
+
+                  <div style="display:flex; align-items:flex-start; gap:12px;">
+                    <img src="teddy1.jpg" alt="Prototype stage 1"
+                         style="width:140px; height:auto; border-radius:6px;">
+                    <p style="color:#9ca3af; font-size:13px;">
+                      Early prototype showing chassis development and initial testing of the front axis and support
+                      structure.
+                    </p>
+                  </div>
+
+                  <div style="display:flex; align-items:flex-start; gap:12px;">
+                    <img src="teddy2.jpg" alt="Internal wiring"
+                         style="width:140px; height:auto; border-radius:6px;">
+                    <p style="color:#9ca3af; font-size:13px;">
+                      Internal layout focusing on structural reinforcement and clean organization of mechanical
+                      components and wiring.
+                    </p>
+                  </div>
+
+                  <div style="display:flex; align-items:flex-start; gap:12px;">
+                    <img src="teddy3.jpg" alt="Final build"
+                         style="width:140px; height:auto; border-radius:6px;">
+                    <p style="color:#9ca3af; font-size:13px;">
+                      Final assembled teddy bear wheelchair robot with completed frame, wheels, and seating platform
+                      designed for stability and playful interaction.
+                    </p>
+                  </div>
+
+                </div>
+              </details>
+            </div>
+          </article>
+
+          <!-- Tic Tac Toe -->
+          <article class="card">
+            <div class="card-tag">Software • C Programming</div>
+            <h3 class="card-title">Tic-Tac-Toe Game with AI</h3>
+            <p class="card-body">
+              Built a console-based tic-tac-toe game in C with both player-vs-player and player-vs-computer modes.
+              Implemented multiple difficulty levels, board state tracking, and input validation for a clean text-based
+              interface.
+            </p>
+          </article>
+
+          <!-- Robotics VP -->
+          <article class="card">
+            <div class="card-tag">Robotics • Leadership</div>
+            <h3 class="card-title">High School Robotics Team VP</h3>
+            <p class="card-body">
+              Helped lead design and programming cycles for competitive robots while coordinating across mechanical and
+              software subteams. Worked on strategy, prototyping, and testing.
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <!-- EXPERIENCE -->
+      <section id="experience">
+        <div class="section-header">
+          <div>
+            <div class="section-kicker">Experience</div>
+            <h2 class="section-title">Work & Leadership</h2>
+          </div>
+          <div class="section-sub">
+            Roles that developed my communication, leadership, and responsibility, all of which I bring into engineering
+            teams.
+          </div>
+        </div>
+
+        <div class="timeline">
+          <!-- Referee -->
+          <article class="timeline-item">
+            <div class="timeline-header">
+              <div>
+                <div class="timeline-role">Hockey Referee</div>
+                <div class="timeline-org">
+                  Guelph Hockey Association (OMHA 2025–Present) • CCT Tournaments &amp; ASHL (2024–Present)
+                </div>
+              </div>
+            </div>
+
+            <ul class="timeline-list">
+              <li>Enforce safety regulations and ensure players comply with league rules.</li>
+              <li>Make fast decisions under pressure with other officials.</li>
+              <li>Promote sportsmanship and maintain a fair environment.</li>
+            </ul>
+          </article>
+
+          <!-- Timekeeper -->
+          <article class="timeline-item">
+            <div class="timeline-header">
+              <div>
+                <div class="timeline-role">Hockey Referee &amp; Timekeeper</div>
+                <div class="timeline-org">
+                  Streetsville Hockey League (2021–2025) • Jr C Streetsville Derbys (2024–2025)
+                </div>
+              </div>
+            </div>
+
+            <ul class="timeline-list">
+              <li>Managed game clocks, scoresheets, and penalty tracking.</li>
+              <li>Operated audio and PA systems for events.</li>
+              <li>Handled conflicts calmly while maintaining fairness.</li>
+            </ul>
+          </article>
+
+          <!-- Lawn business -->
+          <article class="timeline-item">
+            <div class="timeline-header">
+              <div>
+                <div class="timeline-role">Owner</div>
+                <div class="timeline-org">Kaelan The Grass Mower</div>
+              </div>
+              <div class="timeline-date">2019 – 2024</div>
+            </div>
+
+            <ul class="timeline-list">
+              <li>Ran a seasonal lawn-care business, managing clients and quality of work.</li>
+              <li>Developed early entrepreneurial and customer-service skills.</li>
+            </ul>
+          </article>
+        </div>
+      </section>
+
+      <!-- EDUCATION -->
+      <section id="education">
+        <div class="section-header">
+          <div>
+            <div class="section-kicker">Education</div>
+            <h2 class="section-title">Academic Background</h2>
+          </div>
+        </div>
+
+        <div class="timeline">
+          <!-- University -->
+          <article class="timeline-item">
+            <div class="timeline-header">
+              <div>
+                <div class="timeline-role">B.Eng., Mechatronics (Co-op)</div>
+                <div class="timeline-org">University of Guelph – Guelph, ON</div>
+              </div>
+              <div class="timeline-date">Expected 2030</div>
+            </div>
+
+            <ul class="timeline-list">
+              <li>First-year coursework includes General Chemistry, Engineering &amp; Design, Introductory Programming
+                for Engineers, Physics &amp; Applications, and Calculus 1.</li>
+              <li>Winter coursework includes Engineering Mechanics I, Engineering Analysis, Material Science, Calculus 2,
+                and Introductory Electricity &amp; Magnetism.</li>
+            </ul>
+          </article>
+
+          <!-- High School -->
+          <article class="timeline-item">
+            <div class="timeline-header">
+              <div>
+                <div class="timeline-role">High School Diploma</div>
+                <div class="timeline-org">St. Marcellinus C.S.S – Mississauga, ON</div>
+              </div>
+              <div class="timeline-date">2025</div>
+            </div>
+
+            <ul class="timeline-list">
+              <li>Honor Roll student Grades 9–12.</li>
+              <li>Varsity Football Team Captain.</li>
+              <li>Vice President of Robotics Team.</li>
+            </ul>
+          </article>
+        </div>
+      </section>
+    </main>
+
+    <!-- CONTACT / FOOTER -->
+    <footer id="contact">
+      <div class="footer-grid">
+        <div>
+          <strong>Let’s build something.</strong>
+          <div>
+            I’m actively looking for 2026 engineering internships in robotics, mechanical, or mechatronics-related roles.
+          </div>
+        </div>
+        <div class="contact-links">
+          <a href="mailto:kaelan.patterson@icloud.com">kaelan.patterson@icloud.com</a>
+          <span>•</span>
+          <span>647-202-2637</span>
+          <span>•</span>
+          <span>Mississauga / Guelph, ON</span>
+        </div>
+      </div>
+      <div style="margin-top: 8px;">
+        © <span id="year"></span> Kaelan Patterson
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
+
+
