@@ -1,0 +1,11 @@
+{
+  "name": "kaelan-portfolio",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "test": "node --test scripts/site.test.mjs",
+    "preview": "python3 -m http.server 4173"
+  },
+  "engines": { "node": ">=22" }
+}
